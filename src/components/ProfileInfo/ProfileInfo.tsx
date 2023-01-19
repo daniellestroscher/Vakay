@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import { IUser } from '../../../Types';
 import { useUserContext } from '../../Contexts/UserContext';
@@ -57,7 +58,7 @@ function ProfileInfo() {
         onChange={handleImgChange}
       />
       <div className={styles.profileImgBox}>
-        <img
+        <Image
           alt="profile picture"
           src={user.profile_pic}
           className={styles.profileImage}

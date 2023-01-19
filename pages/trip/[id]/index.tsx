@@ -39,7 +39,7 @@ function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, phot
 
   useEffect(() => {
     setTrip(tripItem);
-  }, [id]);
+  }, [id, tripItem]);
 
   return (
     trip &&

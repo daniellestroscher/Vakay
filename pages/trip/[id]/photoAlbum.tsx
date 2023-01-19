@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../../styles/photo-album.module.css';
+import styles from '../../../styles/photoAlbum.module.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import NavBar from '../../../src/components/NavBar/NavBar';
 import { useUserContext } from '../../../src/Contexts/UserContext';

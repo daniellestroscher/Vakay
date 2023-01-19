@@ -7,6 +7,7 @@ import { createUser } from '../src/services/userService';
 import styles from '../styles/login.module.css';
 import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import FullPageLoader from '../src/components/FullPageLoader/FullPageLoader';
+import Image from 'next/image';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -39,7 +40,7 @@ function Login() {
       <NavBar />
       <div className={styles.input}>
         <div className={styles.logoCont}>
-          <img className={styles.logo} src='https://static.wixstatic.com/media/3dbed1_5f26323111f34c199adfaa2153ded0e4~mv2.png'
+          <Image className={styles.logo} src='https://static.wixstatic.com/media/3dbed1_5f26323111f34c199adfaa2153ded0e4~mv2.png'
             alt='vakay logo' />
 
         </div>

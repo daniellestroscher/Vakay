@@ -9,19 +9,21 @@ import { IUser } from '../../../Types';
 import { getUser } from '../../services/userService';
 
 const NavBar = () => {
-  const userContext = useUserContext()
+  const userContext = useUserContext();
   const [user, setUser] = useState<IUser>();
 
-  useEffect(()=> {
-    retrieveUser()
+  useEffect(() => {
+    retrieveUser();
   }, []);
 
   const retrieveUser = async () => {
     if (userContext && userContext.authUser?.uid) {
-      const user = await getUser(userContext.authUser?.uid as string) as IUser;
+      const user = (await getUser(
+        userContext.authUser?.uid as string,
+      )) as IUser;
       setUser(user as IUser);
     }
-  }
+  };
 
   const router = useRouter();
   const goToProfile = () => {
@@ -49,12 +51,12 @@ const NavBar = () => {
         <div>
           {router.pathname !== '/login' ? (
             <section className={styles.userInfo}>
-              {
-                user && user.username?
+              {user && user.username ? (
                 <p className={styles.para}>Welcome back {user?.username}!</p>
-                : <p className={styles.para}>Welcome back!</p>
-              }
-              {user && user.profile_pic !== '/add_photo.png' ?
+              ) : (
+                <p className={styles.para}>Welcome back!</p>
+              )}
+              {user && user.profile_pic !== '/add_photo.png' ? (
                 <div className={styles.profileBox}>
                   <img
                     src={user.profile_pic}
@@ -62,8 +64,15 @@ const NavBar = () => {
                     className={styles.profile}
                     onClick={goToProfile}
                   />
-                </div> : <AccountCircle className={styles.blankProfile} fontSize='large'  data-testid="default-profile" onClick={goToProfile}/>
-              }
+                </div>
+              ) : (
+                <AccountCircle
+                  className={styles.blankProfile}
+                  fontSize="large"
+                  data-testid="default-profile"
+                  onClick={goToProfile}
+                />
+              )}
               <button className={styles.logout} onClick={handleLogout}>
                 Logout
               </button>
