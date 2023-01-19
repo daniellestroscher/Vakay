@@ -40,9 +40,11 @@ function Login() {
       <NavBar />
       <div className={styles.input}>
         <div className={styles.logoCont}>
-          <Image className={styles.logo} src='https://static.wixstatic.com/media/3dbed1_5f26323111f34c199adfaa2153ded0e4~mv2.png'
-            alt='vakay logo' />
-
+          <img
+            className={styles.logo}
+            src="https://static.wixstatic.com/media/3dbed1_5f26323111f34c199adfaa2153ded0e4~mv2.png"
+            alt="vakay logo"
+          />
         </div>
         <div className={styles.selector}>
           <span

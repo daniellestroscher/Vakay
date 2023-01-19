@@ -58,7 +58,7 @@ function ProfileInfo() {
         onChange={handleImgChange}
       />
       <div className={styles.profileImgBox}>
-        <Image
+        <img
           alt="profile picture"
           src={user.profile_pic}
           className={styles.profileImage}
