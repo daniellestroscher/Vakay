@@ -7,7 +7,7 @@ import ProfileInfo from '../src/components/ProfileInfo/ProfileInfo';
 import TripInviteList from '../src/components/TripInviteList/TripInviteList';
 import { useUserContext } from '../src/Contexts/UserContext';
 import { getInvites } from '../src/services/inviteService';
-import { ArrowBack } from '@mui/icons-material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
 import styles from '../styles/profile.module.css';
 import { ITripItem } from '../Types';
 

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './LodgingItem.module.css';
 import { ILodge } from '../../../Types';
-import { Cottage } from '@mui/icons-material';
+import Cottage from '@mui/icons-material/Cottage';
 
 
 interface LodgingItemProps{

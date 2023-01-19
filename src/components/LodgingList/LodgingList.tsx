@@ -3,7 +3,7 @@ import LodgingItem from '../LodgingItem/LodgingItem';
 import AddLodgingForm from '../AddLodgingForm/AddLodgingForm';
 import { ILodge } from '../../../Types';
 import styles from './LodgingList.module.css';
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 
 interface LodgingListProps {
   lodgings: ILodge[]

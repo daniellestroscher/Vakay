@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { DateTime } from "luxon";
-import {
-  Restaurant,
-  DirectionsRun,
-  AirlineSeatReclineExtra,
-  AttachMoney,
-  Luggage,
-  ContentPaste,
-} from '@mui/icons-material';
+import Restaurant from '@mui/icons-material/Restaurant';
+import DirectionsRun from '@mui/icons-material/DirectionsRun';
+import AirlineSeatReclineExtra from '@mui/icons-material/AirlineSeatReclineExtra';
+import AttachMoney from '@mui/icons-material/AttachMoney';
+import Luggage from '@mui/icons-material/Luggage';
+import ContentPaste from '@mui/icons-material/ContentPaste';
 import { IEvent } from '../../../Types';
 import { useUserContext } from '../../Contexts/UserContext';
 import { removeEvent } from '../../services/eventService';

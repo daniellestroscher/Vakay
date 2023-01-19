@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IPhoto } from '../../../Types';
 import styles from './addPhotosForm.module.css';
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import { MoonLoader } from 'react-spinners';
 import imageSize from '@coderosh/image-size';
 

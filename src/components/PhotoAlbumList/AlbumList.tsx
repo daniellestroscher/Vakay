@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { IPhoto } from '../../../Types';
 import AddPhotosForm from '../AddPhotosForm/addPhotosForm';
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 
 interface AlbumListProps {
   tripId: string;

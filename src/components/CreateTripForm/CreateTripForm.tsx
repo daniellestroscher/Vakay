@@ -1,4 +1,4 @@
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import React, { FormEvent, useState } from 'react';
 
 import { FilePondFile } from 'filepond';

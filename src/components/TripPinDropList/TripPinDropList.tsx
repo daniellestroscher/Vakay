@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PinDropItem from '../PinDropItem/PinDropItem';
 import { ILocation } from '../../../Types';
 import styles from './TripPinDropList.module.css';
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 import AddPinDropForm from '../AddPinDropForm/AddPinDropForm';
 import { Wrapper } from '@googlemaps/react-wrapper';
 

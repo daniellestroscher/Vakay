@@ -1,4 +1,4 @@
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 import { useTripsContext } from '../../Contexts/TripsContext';
 import TripList from '../TripList/TripList';
 

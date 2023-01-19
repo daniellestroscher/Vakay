@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from 'react';
 import _ from 'lodash';
 import { DateTime } from "luxon";
 
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 import TimeLineItem from '../TimeLineItem/TimeLineItem';
 import AddEventForm from '../AddEventForm/AddEventForm';
 import { IEvent } from '../../../Types';

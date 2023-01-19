@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 import styles from './AddLodgingForm.module.css';
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import { createLodging } from '../../services/lodgingService';
 import { Loader } from '@googlemaps/js-api-loader';
 import { useRouter } from 'next/router';

@@ -1,4 +1,4 @@
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import { useRouter } from 'next/router';
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
 import { useUserContext } from '../../Contexts/UserContext';

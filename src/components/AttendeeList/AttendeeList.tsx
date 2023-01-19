@@ -1,4 +1,4 @@
-import { AddBox } from '@mui/icons-material';
+import AddBox from '@mui/icons-material/AddBox';
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import { IUser } from '../../../Types';

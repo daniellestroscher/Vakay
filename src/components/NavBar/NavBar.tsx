@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { logout } from '../../firebase';
 import styles from './NavBar.module.css';
-import { AccountCircle } from '@mui/icons-material';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useUserContext } from '../../Contexts/UserContext';
 import { IUser } from '../../../Types';
 import { getUser } from '../../services/userService';

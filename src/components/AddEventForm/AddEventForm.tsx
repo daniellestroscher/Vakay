@@ -1,5 +1,5 @@
 import React from 'react';
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import { useUserContext } from '../../Contexts/UserContext';
 import { createEvent } from '../../services/eventService';
 import { IEvent } from '../../../Types';

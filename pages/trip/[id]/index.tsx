@@ -29,7 +29,7 @@ import { getEventsByTripId } from '../../../src/services/eventService';
 import { getPhotosByTripId } from '../../../src/services/photoService';
 import { Auth } from 'firebase-admin/auth';
 import { getUser } from '../../../src/services/userService';
-import { ArrowBack } from '@mui/icons-material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
 import FullPageLoader from '../../../src/components/FullPageLoader/FullPageLoader';
 
 function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, photos }:InferGetServerSidePropsType<typeof getServerSideProps>) {
