@@ -19,27 +19,6 @@ Welcome to Vakay, the app that makes it easy to plan your trips with friends and
 - View all trip details in one convenient location
 
 ## Development
-# Vakay - The Ultimate Trip Planning App
-
-Welcome to Vakay, the app that makes it easy to plan your trips with friends and family. With Vakay, you can share locations, lodging, photos, and events with your fellow travelers, all in one convenient place.
-
-## Screenshots
-
-![2022-12-13 (5)](https://user-images.githubusercontent.com/110689119/207482598-62b3b845-6252-41b6-9c28-7bc229ea638e.png)
-![2022-12-13](https://user-images.githubusercontent.com/110689119/207482601-6f104eeb-1335-4b0d-bdd5-071c9709ed59.png)
-![2022-12-13 (3)](https://user-images.githubusercontent.com/110689119/207482593-011f481b-67ac-4bec-bef7-a74ec4759951.png)
-![2022-12-13 (4)](https://user-images.githubusercontent.com/110689119/207482595-69bd04fe-d1a6-4e00-98c8-61ab946cba91.png)
-![2022-12-13 (2)](https://user-images.githubusercontent.com/110689119/207482602-07660c3a-7188-4874-aadb-616d4e8e5c9a.png)
-![2022-12-13 (6)](https://user-images.githubusercontent.com/110689119/207482599-d0c58c92-1293-4e64-bc89-33092457ddaf.png)
-
-## Features
-
-- Create and manage trips with your friends and family
-- Invite others to join your trips
-- Share locations, lodging, photos, and events with your fellow travelers
-- View all trip details in one convenient location
-
-## Development
 
 If you want to contribute to the development of Vakay, follow these steps:
 If you want to contribute to the development of Vakay, follow these steps:
@@ -62,7 +41,7 @@ $ npm i
 ```
 
 ```js
-//These are accessable through your Firebase account, just add a new project!
+//These are accessible through your Firebase account, just add a new project!
 NEXT_PUBLIC_API_KEY=<your_API_key>
 NEXT_PUBLIC_AUTH_DOMAIN=<your_public_auth_domain>
 NEXT_PUBLIC_PROJECT_ID=<your_project_id>
@@ -75,7 +54,7 @@ NEXT_PUBLIC_MEASUREMENT_ID=<your_measurment_id>
 //Also from your Firebase account
 GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_google_credentials_.json_file>
 ```js
-//These are accessable through your Firebase account, just add a new project!
+//These are accessible through your Firebase account, just add a new project!
 NEXT_PUBLIC_API_KEY=<your_API_key>
 NEXT_PUBLIC_AUTH_DOMAIN=<your_public_auth_domain>
 NEXT_PUBLIC_PROJECT_ID=<your_project_id>
@@ -117,24 +96,3 @@ $ npm run dev
 ## Support
 
 If you have any questions or need help using Vakay, Send a pull! We are happy to assist you!
-
-
-
-
-
-
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-
-
-
-
-
-4. Run the app: This is a Next.js app, so you can start the app in one command from the root folder.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
