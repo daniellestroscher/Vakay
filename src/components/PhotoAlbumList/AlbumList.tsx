@@ -4,8 +4,9 @@ import styles from './AlbumList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IPhoto } from '../../../Types';
-import AddPhotosForm from '../AddPhotosForm/addPhotosForm';
+
 import AddBox from '@mui/icons-material/AddBox';
+import AddPhotosForm from '../AddPhotosForm/addPhotosForm';
 
 interface AlbumListProps {
   tripId: string;

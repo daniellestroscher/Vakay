@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IPhoto } from '../../../Types';
-import styles from './addPhotosForm.module.css';
+import styles from './AddPhotosForm.module.css';
 import Close from '@mui/icons-material/Close';
 import { MoonLoader } from 'react-spinners';
 import imageSize from '@coderosh/image-size';
@@ -19,18 +19,17 @@ import { useRouter } from 'next/router';
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 interface AddPhotosProps {
-  closeForm: () => void
-  setPhotos: (arg:IPhoto[]) => void
-  allPhotos: IPhoto[]
+  closeForm: () => void;
+  setPhotos: (arg: IPhoto[]) => void;
+  allPhotos: IPhoto[];
 }
 
-function AddPhotosForm ({ closeForm, setPhotos, allPhotos }:AddPhotosProps) {
-
-  const user = useUserContext()
+function AddPhotosForm({ closeForm, setPhotos, allPhotos }: AddPhotosProps) {
+  const user = useUserContext();
   const [imgFiles, setImgFiles] = React.useState<FilePondFile[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const router = useRouter()
+  const router = useRouter();
   const tripId = router.query.id;
 
   const uploadPic = async () => {
@@ -38,30 +37,30 @@ function AddPhotosForm ({ closeForm, setPhotos, allPhotos }:AddPhotosProps) {
     for (const filepond of imgFiles) {
       const blob = await filepond.file.arrayBuffer();
 
-      const size = await imageSize(blob)
-      console.log(size)
+      const size = await imageSize(blob);
+      console.log(size);
 
       let res = await uploadPhotosToAlbum(blob);
-      console.log(blob, 'blob')
+      console.log(blob, 'blob');
       let photo = {
-        src:res?.imageUrl,
-        height:size.height,
-        width:size.width,
+        src: res?.imageUrl,
+        height: size.height,
+        width: size.width,
         tripId: tripId,
-      }
-      if(photo) {
+      };
+      if (photo) {
         console.log(photo);
         let returnedPic;
-        returnedPic = await addPhotos(token as string, photo as IPhoto)
+        returnedPic = await addPhotos(token as string, photo as IPhoto);
         setPhotos([...allPhotos, returnedPic] as IPhoto[]);
       } else {
-        console.log('could not save photo.')
+        console.log('could not save photo.');
       }
     }
     return;
   };
 
-  async function handleSubmit(e:any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     const token = user.authUser?.token;
     if (token && imgFiles.length > 0) {
@@ -75,12 +74,16 @@ function AddPhotosForm ({ closeForm, setPhotos, allPhotos }:AddPhotosProps) {
     }
   }
 
-  return(
+  return (
     <div className={styles.addAttendeeContainer}>
       <button className={styles.XButton} onClick={closeForm}>
         <Close />
       </button>
-      <form className={styles.infoContainer} onSubmit={handleSubmit} data-testid="filepond-input">
+      <form
+        className={styles.infoContainer}
+        onSubmit={handleSubmit}
+        data-testid="filepond-input"
+      >
         <h2>Share your photos!</h2>
         <FilePond
           files={imgFiles.map((fileItem) => fileItem.file)}
@@ -91,24 +94,19 @@ function AddPhotosForm ({ closeForm, setPhotos, allPhotos }:AddPhotosProps) {
           // name="files" /* sets the file input name, it's filepond by default */
           // labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         />
-        {
-          isLoading? (
+        {isLoading ? (
           <div className={styles.spinnerContainer}>
             <MoonLoader color="#fff" size={14} speedMultiplier={0.75} />
           </div>
-          ) : (
+        ) : (
           <div className={styles.buttonDiv}>
-            <button
-              type='submit'
-              className={styles.submitButton}
-            >
+            <button type="submit" className={styles.submitButton}>
               Submit
             </button>
           </div>
-          )
-        }
+        )}
       </form>
     </div>
-  )
+  );
 }
 export default AddPhotosForm;
