@@ -27,7 +27,7 @@ const initAuth = () => {
     firebaseClientInitConfig: {
       apiKey: process.env.NEXT_PUBLIC_API_KEY, // required
       authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-      databaseURL: process.env.CONNECTION_DB,
+      databaseURL: process.env.MONGODB_URI,
       projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
     },
     cookies: {
