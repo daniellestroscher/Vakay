@@ -14,16 +14,23 @@ import { useEffect, useState } from 'react';
 import NavBar from '../../../src/components/NavBar/NavBar';
 import { useUserContext } from '../../../src/Contexts/UserContext';
 import { getTripById } from '../../../src/services/tripService';
-import { getLodgingsByTripId } from '../../../src/services/lodgingService'
+import { getLodgingsByTripId } from '../../../src/services/lodgingService';
 import styles from '../../../styles/Trip.module.css';
-import { ITripItem, ILodge, ILocation, IEvent, IPhoto, IUser } from '../../../Types';
+import {
+  ITripItem,
+  ILodge,
+  ILocation,
+  IEvent,
+  IPhoto,
+  IUser,
+} from '../../../Types';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import {
   AuthAction,
   useAuthUser,
   withAuthUser,
   withAuthUserTokenSSR,
-} from 'next-firebase-auth'
+} from 'next-firebase-auth';
 import { getLocationsByTripId } from '../../../src/services/locationService';
 import { getEventsByTripId } from '../../../src/services/eventService';
 import { getPhotosByTripId } from '../../../src/services/photoService';
@@ -32,14 +39,24 @@ import { getUser } from '../../../src/services/userService';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import FullPageLoader from '../../../src/components/FullPageLoader/FullPageLoader';
 
-function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, photos }:InferGetServerSidePropsType<typeof getServerSideProps>) {
+function TripPage({
+  tripItem,
+  attendeesObjArr,
+  lodgings,
+  locations,
+  events,
+  photos,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
   const { id } = router.query;
   const [trip, setTrip] = useState<ITripItem>();
 
   useEffect(() => {
     setTrip(tripItem);
+    console.log('im called');
   }, [id, tripItem]);
+
+  const user = useUserContext();
 
   return (
     trip &&
@@ -52,7 +69,7 @@ function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, phot
             <Divider />
           </div>
           <div className={styles.tripContainer}>
-            <Link href='/'>
+            <Link href="/">
               <ArrowBack />
             </Link>
             <TripHeader
@@ -61,9 +78,13 @@ function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, phot
               end={trip.endDate}
               pic={trip.picUrl}
             />
-            <AttendeeList attendeesObjArr={attendeesObjArr} attendees={trip.attendees} invites={trip.invites} />
-            <AlbumList tripId={id.toString()} photos={photos}/>
-            <TimeLineList tripId={id.toString()} events={events}/>
+            <AttendeeList
+              attendeesObjArr={attendeesObjArr}
+              attendees={trip.attendees}
+              invites={trip.invites}
+            />
+            <AlbumList tripId={id.toString()} photos={photos} />
+            <TimeLineList tripId={id.toString()} events={events} />
             <TripPinDropList locations={locations} />
             <LodgingList lodgings={lodgings} />
           </div>
@@ -75,25 +96,52 @@ function TripPage({ tripItem, attendeesObjArr, lodgings, locations, events, phot
 export default withAuthUser({
   whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
   LoaderComponent: FullPageLoader,
-})(TripPage as React.FunctionComponent<any>)
+})(TripPage as React.FunctionComponent<any>);
 
-export const getServerSideProps: GetServerSideProps<{tripItem: ITripItem, attendeesObjArr:(void | IUser)[], lodgings: ILodge[], locations:ILocation[], events:IEvent[], photos:IPhoto[]}> = withAuthUserTokenSSR({
+export const getServerSideProps: GetServerSideProps<{
+  tripItem: ITripItem;
+  attendeesObjArr: (void | IUser)[];
+  lodgings: ILodge[];
+  locations: ILocation[];
+  events: IEvent[];
+  photos: IPhoto[];
+}> = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-
 })(async ({ params, AuthUser }) => {
-  const token = await AuthUser.getIdToken()
+  const token = await AuthUser.getIdToken();
 
-  const tripItem = await getTripById(params?.id as string, token as string) as ITripItem;
+  const tripItem = (await getTripById(
+    params?.id as string,
+    token as string,
+  )) as ITripItem;
 
-  let attendeesObjArr:(IUser | void)[] = [];
-  if(tripItem.attendees) {
-    attendeesObjArr = await Promise.all<IUser | void>(tripItem.attendees.map<Promise<IUser | void>>(async (uid) => await getUser(uid)))
+  let attendeesObjArr: (IUser | void)[] = [];
+  if (tripItem.attendees) {
+    attendeesObjArr = await Promise.all<IUser | void>(
+      tripItem.attendees.map<Promise<IUser | void>>(
+        async (uid) => await getUser(uid),
+      ),
+    );
   }
 
-  const lodgings = await getLodgingsByTripId(token as string, params?.id as string) as ILodge[];
-  const locations = await getLocationsByTripId(token as string, params?.id as string) as ILocation[];
-  const events = await getEventsByTripId(token as string, params?.id as string) as IEvent[];
-  const photos = await getPhotosByTripId(token as string, params?.id as string) as IPhoto[];
+  const lodgings = (await getLodgingsByTripId(
+    token as string,
+    params?.id as string,
+  )) as ILodge[];
+  const locations = (await getLocationsByTripId(
+    token as string,
+    params?.id as string,
+  )) as ILocation[];
+  const events = (await getEventsByTripId(
+    token as string,
+    params?.id as string,
+  )) as IEvent[];
+  const photos = (await getPhotosByTripId(
+    token as string,
+    params?.id as string,
+  )) as IPhoto[];
 
-  return { props:{ tripItem, attendeesObjArr, lodgings, locations, events, photos }}
-})
+  return {
+    props: { tripItem, attendeesObjArr, lodgings, locations, events, photos },
+  };
+});
