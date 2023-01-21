@@ -56,7 +56,7 @@ function TripPage({
     console.log('im called');
   }, [id, tripItem]);
 
-  const user = useUserContext();
+  //const user = useUserContext();
 
   return (
     trip &&
